@@ -1,0 +1,37 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=bevy_kxs",
+                    "--package=bevy_kxs",
+                ],
+                "filter": {
+                    "name": "bevy_kxs",
+                    "kind": "bin"
+                },
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "BEVY_ASSET_ROOT": "${workspaceFolder}",
+                "CARGO_MANIFEST_DIR": "${workspaceFolder}",
+            },
+            "linux": {
+                "env": {
+                    "LD_LIBRARY_PATH": "${env:HOME}/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/x86_64-unknown-linux-gnu/lib:${workspaceFolder}/target/debug/deps:${env:LD_LIBRARY_PATH}"
+                }
+            },
+            "windows": {
+                "env": {
+                    "PATH": "${env:USERPROFILE}/.rustup/toolchains/nightly-x86_64-pc-windows-msvc/bin;${workspaceFolder}/target/debug/deps;${env:PATH}",
+                }
+            }
+        },
+    ]
+}
